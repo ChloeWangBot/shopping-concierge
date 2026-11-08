@@ -1,0 +1,6 @@
+interface:
+  display_name: "购物省钱与售后管家"
+  short_description: "试用：依赖宿主账号工具，先只读比价，再按授权跟进售后"
+  default_prompt: "使用 $shopping-concierge，先只读核对我已登录的平台和本批保留商品，给真实结算比价与售后清单；先不购买、退货、确认收货或发送客服消息。"
+policy:
+  allow_implicit_invocation: true
