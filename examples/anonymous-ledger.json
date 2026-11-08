@@ -1,0 +1,192 @@
+{
+  "scope": {
+    "ledger_id": "DEMO-ONLY",
+    "as_of": "2026-11-08T12:00:00+08:00",
+    "budgets": {
+      "CNY": 18000
+    }
+  },
+  "items": [
+    {
+      "id": "A-old",
+      "title": "虚构蓝色上衣旧单",
+      "public_name": "演示蓝上衣旧单",
+      "sku": {
+        "product_code": "DEMO-TOP",
+        "spec": {
+          "color": "蓝色",
+          "size": "80",
+          "pack": "1件"
+        }
+      },
+      "quantity": 1,
+      "cancelled_quantity": 0,
+      "refunded_quantity": 1,
+      "unit_paid": {
+        "currency": "CNY",
+        "amount_cents": 12000
+      },
+      "order_ref": "DEMO-PRIVATE-ORDER-OLD",
+      "notes": "匿名演示，非真实购物数据"
+    },
+    {
+      "id": "A-new",
+      "title": "虚构蓝色上衣新单",
+      "public_name": "演示蓝上衣（示意图）",
+      "sku": {
+        "product_code": "DEMO-TOP",
+        "spec": {
+          "color": "蓝色",
+          "size": "80",
+          "pack": "1件"
+        }
+      },
+      "quantity": 1,
+      "cancelled_quantity": 0,
+      "refunded_quantity": 0,
+      "unit_paid": {
+        "currency": "CNY",
+        "amount_cents": 9500
+      },
+      "image": "shirt-demo.png",
+      "public_image": true,
+      "order_ref": "DEMO-PRIVATE-ORDER-NEW"
+    },
+    {
+      "id": "B",
+      "title": "虚构保留裤子",
+      "public_name": "演示保留裤子",
+      "sku": {
+        "product_code": "DEMO-PANTS",
+        "spec": {
+          "color": "米色",
+          "size": "90",
+          "pack": "1件"
+        }
+      },
+      "quantity": 1,
+      "cancelled_quantity": 0,
+      "refunded_quantity": 0,
+      "unit_paid": {
+        "currency": "CNY",
+        "amount_cents": 8000
+      }
+    },
+    {
+      "id": "C",
+      "title": "虚构已取消商品",
+      "public_name": "演示已取消商品",
+      "sku": {
+        "product_code": "DEMO-CANCELLED",
+        "spec": {
+          "size": "80"
+        }
+      },
+      "quantity": 1,
+      "cancelled_quantity": 1,
+      "refunded_quantity": 0,
+      "unit_paid": {
+        "currency": "CNY",
+        "amount_cents": 9900
+      }
+    }
+  ],
+  "quotes": [
+    {
+      "id": "Q-exact",
+      "item_ids": [
+        "A-new"
+      ],
+      "matches": {
+        "A-new": "same"
+      },
+      "stage": "paid",
+      "currency": "CNY",
+      "items_total_cents": 9500,
+      "fees_cents": 0,
+      "total_cents": 9500,
+      "selected": true,
+      "coupons": [
+        {
+          "id": "DEMO-SINGLE-USE",
+          "single_use": true
+        }
+      ],
+      "observed_at": "2026-11-08T12:00:00+08:00",
+      "source": "匿名离线演示，不是真实平台证据",
+      "quantities": {
+        "A-new": 1
+      }
+    },
+    {
+      "id": "Q-wrong-size",
+      "item_ids": [
+        "A-new"
+      ],
+      "matches": {
+        "A-new": "different"
+      },
+      "stage": "candidate",
+      "currency": "CNY",
+      "items_total_cents": 7000,
+      "fees_cents": null,
+      "total_cents": null,
+      "selected": false,
+      "coupons": []
+    }
+  ],
+  "actions": [
+    {
+      "id": "ACT-buy",
+      "type": "buy",
+      "target_id": "A-new",
+      "idempotency_key": "DEMO-PLAN-ONE-A-BUY",
+      "status": "verified",
+      "financial": true,
+      "currency": "CNY",
+      "amount_cents": 9500
+    },
+    {
+      "id": "ACT-unknown-shipping",
+      "type": "shipping_payment",
+      "target_id": "PARCEL-DEMO",
+      "idempotency_key": "DEMO-PLAN-ONE-SHIPPING",
+      "status": "unknown",
+      "financial": true,
+      "currency": "CNY",
+      "amount_cents": 500
+    }
+  ],
+  "parcels": [
+    {
+      "id": "PARCEL-DEMO",
+      "item_ids": [
+        "A-old"
+      ],
+      "status": "picked_up",
+      "pickup_code": "DEMO-PICKUP",
+      "pickup_window": "演示区间，不是真实预约",
+      "return_recipient": "DEMO-PRIVATE-NAME",
+      "return_address": "DEMO-PRIVATE-ADDRESS",
+      "tracking": {
+        "receipt_verified": true,
+        "carrier": "演示承运商",
+        "tracking_number": "DEMO-WAYBILL-001",
+        "evidence_source": "匿名演示夹具，非真实运单",
+        "verified_at": "2026-11-08T12:00:00+08:00"
+      }
+    }
+  ],
+  "refunds": [
+    {
+      "id": "RF-A",
+      "item_id": "A-old",
+      "currency": "CNY",
+      "amount_cents": 12000,
+      "status": "received",
+      "purpose": "savings",
+      "destination": "cash",
+      "received_verified_at": "2026-11-08T12:00:00+08:00"
+    }
+  ]
+}
