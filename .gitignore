@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+shopping-data/
+private/
+outputs/
+receipts/
+*.har
+*.log
+cookies*.json
+.env
+.env.*
